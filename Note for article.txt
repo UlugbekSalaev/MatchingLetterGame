@@ -1,0 +1,3 @@
+When generate cubic from 27 letters, a letter occur in one time in a cubic, it means, six letters in a cubic is unique.
+Because, a cubicle's side uses a single time while forming a word.
+ch, sh harflari bitta kubikda bulmaydi
