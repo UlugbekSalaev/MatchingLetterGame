@@ -7,7 +7,7 @@ import operator
 
 letters = ['a', 'b', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'ō', 'p', 'q', 'r', 's', 'c', 't',
            'u', 'v', 'x', 'y', 'z', 'ḡ']  # 'ş', 'ç'
-cc = 7  # cubic count
+cc = 4  # cubic count
 print(len(letters))
 cubics = []
 for i in combinations(letters, 6):
@@ -27,6 +27,8 @@ words = [line.rstrip() for line in lines]
 
 bi_freq = {}
 for word in words:
+    if len(word)>4:
+        continue
     for c in word:
         if c in letter_frq:
             letter_frq[c] += 1
@@ -44,7 +46,7 @@ for word in words:
 letter_frq = dict(sorted(letter_frq.items(), key=operator.itemgetter(1), reverse=True))
 bi_freq = dict(sorted(bi_freq.items(), key=operator.itemgetter(1), reverse=True))
 print(letter_frq)
-print(dict(list(bi_freq.items())[0:120]))
+print(dict(list(bi_freq.items())[0:115]))
 
 my_letters = letters.copy()
 last_bi = ""
@@ -65,8 +67,12 @@ print(last_bi)
 print(ind)
 
 cubletter = ""
-dubl = ['a','i','o','r','l','s','u','t','n','m','k','q','b','h','y']
-new_bi_freq = dict(list(bi_freq.items())[0:120])
+
+dubl = list(letter_frq)[:cc*6-27]
+print("dubl")
+print(dubl)
+dubl = []
+new_bi_freq = dict(list(bi_freq.items())[0:115])
 for i in new_bi_freq:
     if i[0] not in cubletter:
         cubletter += i[0]
@@ -81,9 +87,10 @@ for i in new_bi_freq:
             cubletter += i[1]
             dubl.remove(i[1])
 
-for i in range(7):
-    for j in range(7):
-        print(cubletter[i*6+j], end='\t')
+print(cubletter)
+for i in range(6):
+    for j in range(cc):
+        print(cubletter[i*cc+j], end='\t')
     print()
 
 # checking errors in words' letter
