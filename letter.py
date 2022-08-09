@@ -56,3 +56,26 @@ print("*#*#", cnt2)
 print("#*##", cnt3)
 print("*##*", cnt4)
 print("Total=", cnt)
+
+# for 3-letter words
+cnt = 0
+cnt1 = 0
+cnt2 = 0
+cnt3 = 0
+cnt4 = 0
+
+for word in words:
+    if len(word) != 3:
+        continue
+    if word[0] in hard and word[1] in soft and word[2] in hard:
+        cnt1 += 1
+    if word[0] in soft and word[1] in hard and word[2] in soft:
+        cnt2 += 1
+    if word[0] in soft and word[1] in hard and word[2] in hard:
+        cnt3 += 1
+    cnt += 1
+print('3-letter words:')
+print("#*#", cnt1)
+print("*#*", cnt2)
+print("*##", cnt3)
+print("Total=", cnt)
