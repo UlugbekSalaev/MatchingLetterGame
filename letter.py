@@ -1,3 +1,4 @@
+# letter analysis at the word
 letters = ['a','b','d','e','f','g','h','i','j','k','l','m','n','o','ō','p','q','r','s','c','t','u','v','x','y','z','ḡ']
 
 soft = ['a','e','i','o','ō','u']
@@ -10,6 +11,7 @@ cnt = 0
 cnt1 = 0
 cnt2 = 0
 cnt3 = 0
+
 for word in words:
     if len(word)!=5:
         continue
@@ -21,7 +23,7 @@ for word in words:
         cnt3 += 1
     cnt += 1
 
-print(cnt)
-print(cnt1)
-print(cnt2)
-print(cnt3)
+print("#*#*# ", cnt1)
+print("*#*#*",  cnt2)
+print("#*##*",  cnt3)
+print("Total=", cnt)
