@@ -7,28 +7,28 @@ import operator
 
 letters = ['a', 'b', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'ō', 'p', 'q', 'r', 's', 'c', 't',
            'u', 'v', 'x', 'y', 'z', 'ḡ']  # 'ş', 'ç'
-cc = 4  # cubic count
-print(len(letters))
+cc = 5  # cubic count
+print("Len of the alphabet="+str(len(letters)))
 cubics = []
 for i in combinations(letters, 6):
     cubics.append(i)
 print("Count of all available cubics generated from letters = " + str(len(cubics)))
 #print(cubics[0])
-print("-------Print one combination for game's 8 cubics-------")
+print("-------Print one combination for game's "+str(cc)+" cubics-------")
 for i in combinations(cubics, cc):
     print(i)
     break
 
 words = []
-letter_frq = {}
 with open("words", encoding="utf8") as file:
     lines = file.readlines()
 words = [line.rstrip() for line in lines]
 
+letter_frq = {}
 bi_freq = {}
 for word in words:
-    if len(word)>4:
-        continue
+    # if len(word)>4:
+    #     continue
     for c in word:
         if c in letter_frq:
             letter_frq[c] += 1
@@ -46,11 +46,10 @@ for word in words:
 letter_frq = dict(sorted(letter_frq.items(), key=operator.itemgetter(1), reverse=True))
 bi_freq = dict(sorted(bi_freq.items(), key=operator.itemgetter(1), reverse=True))
 print(letter_frq)
-print(dict(list(bi_freq.items())[0:115]))
 
 my_letters = letters.copy()
 last_bi = ""
-ind = 0
+last_bi_ind = 0
 for i in bi_freq:
     if i[0] in my_letters:
         my_letters.remove(i[0])
@@ -62,17 +61,18 @@ for i in bi_freq:
         if not my_letters:
             last_bi = i
             break
-    ind += 1
+    last_bi_ind += 1
 print(last_bi)
-print(ind)
+print(last_bi_ind)
+new_bi_freq = dict(list(bi_freq.items())[0:last_bi_ind])
+print(dict(list(bi_freq.items())[0:last_bi_ind]))
 
 cubletter = ""
 
 dubl = list(letter_frq)[:cc*6-27]
-print("dubl")
-print(dubl)
+print("dubl="+",".join(dubl))
 dubl = []
-new_bi_freq = dict(list(bi_freq.items())[0:115])
+new_bi_freq = dict(list(bi_freq.items())[0:last_bi_ind])
 for i in new_bi_freq:
     if i[0] not in cubletter:
         cubletter += i[0]
