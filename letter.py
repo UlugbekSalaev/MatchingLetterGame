@@ -14,21 +14,36 @@ cnt = 0
 cnt1 = 0
 cnt2 = 0
 cnt3 = 0
+cnt4 = 0
+cnt5 = 0
 
 for word in words:
     if len(word) != 5:
         continue
+    cnt += 1
     if word[0] in hard and word[1] in soft and word[2] in hard and word[3] in soft and word[4] in hard:
         cnt1 += 1
+        continue
     if word[0] in soft and word[1] in hard and word[2] in soft and word[3] in hard and word[4] in soft:
         cnt2 += 1
+        continue
     if word[0] in hard and word[1] in soft and word[2] in hard and word[3] in hard and word[4] in soft:
         cnt3 += 1
-    cnt += 1
+        continue
+    if word[0] in soft and word[1] in hard and word[2] in hard and word[3] in soft and word[4] in hard:
+        cnt4 += 1
+        continue
+    if word[0] in soft and word[1] in hard and word[2] in soft and word[3] in hard and word[4] in hard:
+        cnt5 += 1
+        continue
+    print(word)
+
 print('5-letter words:')
 print("#*#*# ", cnt1)
 print("*#*#*", cnt2)
 print("#*##*", cnt3)
+print("*##*#", cnt4)
+print("*#*##", cnt5)
 print("Total=", cnt)
 
 # for 4-letter words

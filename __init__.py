@@ -2,12 +2,11 @@
 # 27 ta harf
 from nltk import ngrams
 from itertools import combinations
-from itertools import permutations
 import operator
 
 letters = ['a', 'b', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'ō', 'p', 'q', 'r', 's', 'c', 't',
            'u', 'v', 'x', 'y', 'z', 'ḡ']  # 'ş', 'ç'
-cc = 5  # cubic count
+cc = 8  # cubic count
 lc = len(letters) # length of alphabet
 print("Len of the alphabet="+str(len(letters)))
 cubics = []
@@ -27,16 +26,20 @@ words = [line.rstrip() for line in lines]
 
 letter_frq = {}
 bi_freq = {}
+tri_freq= {}
 for word in words:
     # if len(word)>4:
     #     continue
+    # calculating letter frq
     for c in word:
         if c in letter_frq:
             letter_frq[c] += 1
         else:
             letter_frq[c] = 1
 
+    # calculating bigram frq
     bigrams = ngrams(word, 2)
+    trigrams = ngrams(word, 3)
     for grams in bigrams: # grams = ('z', 'u')
         key = grams[0]+grams[1]
         if key in bi_freq:
@@ -44,8 +47,16 @@ for word in words:
         else:
             bi_freq[key] = 1
 
+    for grams in trigrams: # grams = ('z', 'u', 'k')
+        key = grams[0]+grams[1]+grams[2]
+        if key in tri_freq:
+            tri_freq[key] += 1
+        else:
+            tri_freq[key] = 1
+
 letter_frq = dict(sorted(letter_frq.items(), key=operator.itemgetter(1), reverse=True))
 bi_freq = dict(sorted(bi_freq.items(), key=operator.itemgetter(1), reverse=True))
+tri_freq = dict(sorted(tri_freq.items(), key=operator.itemgetter(1), reverse=True))
 print(letter_frq)
 
 my_letters = letters.copy()
@@ -69,10 +80,12 @@ print(last_bi_ind)
 
 new_bi_freq = dict(list(bi_freq.items())[0:last_bi_ind])
 print(new_bi_freq)
+print(tri_freq)
 
 cubletter = ""
-
-dubl = list(letter_frq)[:cc*6-lc]
+dubl = []
+if cc*6 - lc > 0:
+    dubl = list(letter_frq)[:cc*6-lc]
 print("dubl="+",".join(dubl))
 # dubl = []
 new_bi_freq = dict(list(bi_freq.items())[0:last_bi_ind])

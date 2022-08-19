@@ -1,7 +1,7 @@
 from itertools import permutations
 import operator
 
-cc = 5
+cc = 8
 cubics = []
 words = []
 with open("words", encoding="utf8") as file:
