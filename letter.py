@@ -56,6 +56,7 @@ for word in words:
         continue
     if word[0] in hard and word[1] in hard and word[2] in soft and word[3] in hard and word[4] in hard:
         cnt9 += 1
+        print(word)
         continue
     if word[0] in hard and word[1] in hard and word[2] in hard and word[3] in soft and word[4] in hard:
         cnt10 += 1

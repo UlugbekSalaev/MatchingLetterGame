@@ -6,7 +6,7 @@ import operator
 
 letters = ['a', 'b', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'ō', 'p', 'q', 'r', 's', 'c', 't',
            'u', 'v', 'x', 'y', 'z', 'ḡ']  # 'ş', 'ç'
-cc = 8  # cubic count
+cc = 7  # cubic count
 lc = len(letters) # length of alphabet
 print("Len of the alphabet="+str(len(letters)))
 cubics = []
