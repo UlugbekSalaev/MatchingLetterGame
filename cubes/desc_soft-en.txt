@@ -1,0 +1,48 @@
+aproach-4: bigram_sort(des), dubl=bigram_sort[soft(lf)+harf(lf)]
+a	i	c	b	u	g	
+r	n	o	m	w	y	
+e	l	t	v	k	x	
+s	d	h	p	f	z
+
+a	n	t	p	g	q
+r	l	h	u	y	a
+e	d	b	w	x	i
+s	c	m	k	z	o
+i	o	v	f	j	u
+
+a	l	b	k	j	c
+r	d	m	f	q	o
+e	c	v	g	a	b
+s	o	p	y	e	u
+i	t	u	x	i	f
+n	h	w	z	d	g
+
+a	d	v	y	i	b
+r	c	p	x	n	m
+e	o	u	z	l	u
+s	t	w	j	d	k
+i	h	k	q	c	f
+n	b	f	a	o	g
+l	m	g	e	h	j
+
+a	c	u	j	l	v	
+r	o	w	q	d	p	
+e	t	k	a	c	u	
+s	h	f	r	o	k
+i	b	g	e	t	f
+n	m	y	s	h	g
+l	v	x	i	b	j
+d	p	z	n	m	q
+
+
+# 	 6024 	 1026 	 2499 	 2499 	
+4 	 637 	 369 	 268 	 0 	
+4 	 0.106 	 0.36 	 0.107 	 0.0 	
+5 	 2129 	 716 	 1035 	 378 	
+5 	 0.353 	 0.698 	 0.414 	 0.151 	
+6 	 4259 	 919 	 1946 	 1394 	
+6 	 0.707 	 0.896 	 0.779 	 0.558 	
+7 	 5317 	 996 	 2293 	 2028 	
+7 	 0.883 	 0.971 	 0.918 	 0.812 	
+8 	 5519 	 1014 	 2390 	 2115 	
+8 	 0.916 	 0.988 	 0.956 	 0.846 	

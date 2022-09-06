@@ -1,0 +1,48 @@
+aproach-3: bigram_sort(asc), dubl_sort(lf)
+
+c	i	r	y	z	b	
+w	u	n	f	d	x	
+m	q	p	l	k	g	
+h	s	j	v	t	a
+
+c	u	p	v	b	o	
+w	q	j	z	x	s
+m	s	y	d	g	a
+h	r	f	k	a	e
+i	n	l	t	e	o
+
+c	q	y	k	e	l
+w	s	f	t	o	d
+m	r	l	b	i	t
+h	n	v	x	s	a
+i	p	z	g	r	e
+u	j	d	a	n	o
+
+c	s	l	x	h	d
+w	r	v	g	i	l
+m	n	z	a	u	t
+h	p	d	e	s	b
+i	j	k	o	r	a
+u	y	t	c	n	e
+q	f	b	m	p	o
+
+c	r	z	e	s	d
+w	n	d	o	r	k
+m	p	k	c	n	t
+h	j	t	w	p	b
+i	y	b	m	f	g
+u	f	x	h	y	a
+q	l	g	i	v	e
+s	v	a	u	l	o	
+
+# 	 6024 	 1026 	 2499 	 2499 	
+4 	 312 	 206 	 106 	 0 	
+4 	 0.052 	 0.201 	 0.042 	 0.0 	
+5 	 1908 	 701 	 926 	 281 	
+5 	 0.317 	 0.683 	 0.371 	 0.112 	
+6 	 4251 	 907 	 1917 	 1427 	
+6 	 0.706 	 0.884 	 0.767 	 0.571 	
+7 	 5321 	 992 	 2279 	 2050 	
+7 	 0.883 	 0.967 	 0.912 	 0.82 	
+8 	 5744 	 1022 	 2449 	 2273 	
+8 	 0.954 	 0.996 	 0.98 	 0.91

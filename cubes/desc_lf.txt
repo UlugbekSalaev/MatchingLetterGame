@@ -1,0 +1,48 @@
+tesis aproach-2: bigram_sort(des), dubl_sort(lf)
+a	m	t	u	c	j	
+r	n	o	q	z	g	
+l	s	y	d	b	f	
+i	h	k	v	e	p	
+
+a	n	y	v	j	ḡ	
+r	s	k	c	g	x	
+l	h	u	z	f	a	
+i	t	q	b	p	i	
+m	o	d	e	ō	o
+
+a	s	u	b	ō	i	
+r	h	q	e	ḡ	n	
+l	t	d	j	x	s	
+i	o	v	g	a	t	
+m	y	c	f	r	o	
+n	k	z	p	l	u	
+
+a	h	d	g	r	t	
+r	t	v	f	l	o	
+l	o	c	p	i	y	
+i	y	z	ō	m	k	
+m	k	b	ḡ	n	u	
+n	u	e	x	s	q	
+s	q	j	a	h	b	
+
+a	t	c	ō	n	q	
+r	o	z	ḡ	s	d	
+l	y	b	x	h	v	
+i	k	e	a	t	z	
+m	u	j	r	o	b	
+n	q	g	l	y	e	
+s	d	f	i	k	p	
+h	v	p	m	u	ō
+
+
+# 	 4558 	 518 	 1165 	 2875 	
+4 	 302 	 185 	 117 	 0 	
+4 	 0.179 	 0.357 	 0.1 	 0.0 	
+5 	 867 	 299 	 353 	 215 	
+5 	 0.19 	 0.577 	 0.303 	 0.075 	
+6 	 2914 	 478 	 919 	 1517 	
+6 	 0.639 	 0.923 	 0.789 	 0.528 	
+7 	 3496 	 492 	 1016 	 1988 	
+7 	 0.767 	 0.95 	 0.872 	 0.691 	
+8 	 4043 	 516 	 1106 	 2421 	
+8 	 0.887 	 0.996 	 0.949 	 0.842 	
