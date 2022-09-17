@@ -4,19 +4,16 @@ from nltk import ngrams
 from itertools import combinations
 import operator
 
-letters = ['a', 'b', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'ō', 'p', 'q', 'r', 's', 'c', 't',
-           'u', 'v', 'x', 'y', 'z', 'ḡ']  # 'ş', 'ç'
-
+letters = ['a', 'i', 'o', 'r', 'l', 's', 't', 'u', 'n', 'm', 'q', 'k', 'y', 'h', 'b', 'e', 'd', 'z', 'v', 'ō', 'p', 'f', 'g', 'j', 'ḡ', 'x', 'c']  # 'ş', 'ç'
 soft = ['a', 'i', 'o', 'u', 'e', 'ō',]
 hard = ['r', 'l', 's', 't', 'n', 'm', 'q', 'k', 'y', 'h', 'b', 'd', 'z', 'v', 'p', 'f', 'g', 'j', 'ḡ', 'x', 'c']
 
-
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-           'u', 'v', 'w', 'x', 'y', 'z']  #  english
-soft = ['a', 'i', 'o', 'u', 'e']
-hard = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't',
-           'v', 'w', 'x', 'y', 'z']
-
+# letters = ['e', 'a', 's', 'o', 'r', 'l', 't', 'i', 'd', 'n', 'c', 'u', 'b', 'p', 'm', 'h', 'g', 'f', 'y', 'k', 'w', 'v', 'x', 'z', 'j', 'q']  #  english
+# soft = ['e', 'a', 'o', 'i', 'u']
+# hard = ['s', 'r', 'l', 't', 'd', 'n', 'c', 'b', 'p', 'm', 'h', 'g', 'f', 'y', 'k', 'w', 'v', 'x', 'z', 'j', 'q']
+print(len(letters))
+print(len(soft))
+print(len(hard))
 cc = 8  # cubic count
 lc = len(letters) # length of alphabet
 print("Len of the alphabet="+str(len(letters)))
@@ -31,9 +28,10 @@ print("Count of all available cubics generated from letters = " + str(len(cubics
 #     break
 
 words = []
-with open("words_eng", encoding="utf8") as file:
+with open("words", encoding="utf8") as file:
     lines = file.readlines()
 words = [line.rstrip() for line in lines]
+
 
 letter_frq = {}
 bi_freq = {}
