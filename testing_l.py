@@ -2,7 +2,7 @@ cc = 7  # cubes count
 for app in range(2):
     for iteration in range(5):
 
-        with open("result/test_uz/test"+str(iteration), encoding="utf8") as file: #
+        with open("result/test_uz/test"+str(iteration), encoding="utf8") as file:   #
             lines = file.readlines()
             words_c = [line.rstrip().split(',')[0] for line in lines]
         t3 = 0

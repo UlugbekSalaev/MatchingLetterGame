@@ -1,6 +1,6 @@
 from itertools import permutations
 import operator
-soft = ['a', 'i', 'o', 'u', 'e', 'ō',]
+soft = ['a', 'i', 'o', 'u', 'e', 'ō']
 cc = 8
 cubics = []
 words = []
