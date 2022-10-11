@@ -5,7 +5,7 @@ from itertools import combinations
 import operator
 import random
 
-dataset = "uz"  # en
+dataset = "en"  # en
 if dataset == "uz":
     letters = ['a', 'i', 'o', 'r', 'l', 's', 't', 'u', 'n', 'm', 'q', 'k', 'y', 'h', 'b', 'e', 'd', 'z', 'v', 'ō', 'p', 'f', 'g', 'j', 'ḡ', 'x', 'c']  # 'ş', 'ç'
     soft = ['a', 'i', 'o', 'u', 'e', 'ō']
@@ -15,7 +15,7 @@ else:
     soft = ['e', 'a', 'o', 'i', 'u']
     hard = ['s', 'r', 'l', 't', 'd', 'n', 'c', 'b', 'p', 'm', 'h', 'g', 'f', 'y', 'k', 'w', 'v', 'x', 'z', 'j', 'q']
 
-cc = 7  # cubic count
+cc = 5  # cubic count
 lc = len(letters) # length of alphabet
 print("Len of the alphabet="+str(len(letters)))
 

@@ -1,8 +1,9 @@
-cc = 7  # cubes count
+cc = 6  # cubes count
+dataset = "en"
 for app in range(2):
     for iteration in range(5):
 
-        with open("result/test_uz/test"+str(iteration), encoding="utf8") as file:   #
+        with open("result/test_"+dataset+"/test"+str(iteration), encoding="utf8") as file:   #
             lines = file.readlines()
             words_c = [line.rstrip().split(',')[0] for line in lines]
         t3 = 0
@@ -16,7 +17,7 @@ for app in range(2):
             if len(i) == 5:
                 t5 += 1
 
-        with open("result/test_uz/"+str(cc)+"cub/test_res_app"+str(app)+"_it"+str(iteration), encoding="utf8") as file: #
+        with open("result/test_"+dataset+"/"+str(cc)+"cub/test_res_app"+str(app)+"_it"+str(iteration), encoding="utf8") as file: #
             lines = file.readlines()
             words_c = [line.rstrip().split(',')[0] for line in lines]
         cnt3 = 0

@@ -1,13 +1,13 @@
 from itertools import permutations
 import operator
 
-dataset = "uz"
+dataset = "en"
 
 if dataset == "uz":
     soft = ['a', 'i', 'o', 'u', 'e', 'ō']    # uz
 else:
     soft = ['e', 'a', 'o', 'i', 'u']      # en
-cc = 7
+cc = 6
 cubics = []
 words = []
 
