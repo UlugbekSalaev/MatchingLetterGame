@@ -1,3 +1,6 @@
+# 1-chi execute fayl
+# random tanlab olingan kubiklar yordamida qancha suzni (datasetdagi suzlardan) yasab bilishini hisoblash
+# random kubiklar yordamisa yasaladigan suzlarni faylga yozib olish
 from itertools import permutations
 import operator
 

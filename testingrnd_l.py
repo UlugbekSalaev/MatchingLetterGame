@@ -1,3 +1,6 @@
+# 2-chi execute fayl
+# random tanlab olingan kubiklar yordamida qancha suzni (datasetdagi suzlardan) yasab bilishini hisoblash
+# random kubiklar yordamida yasalgan suzlarni fayldan uqib olib sanab chiqish
 cc = 8  # cubes count
 for app in range(2):
     for iteration in range(1):
