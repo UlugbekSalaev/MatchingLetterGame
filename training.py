@@ -10,10 +10,14 @@ if dataset == "uz":
     letters = ['a', 'i', 'o', 'r', 'l', 's', 't', 'u', 'n', 'm', 'q', 'k', 'y', 'h', 'b', 'e', 'd', 'z', 'v', 'ō', 'p', 'f', 'g', 'j', 'ḡ', 'x', 'c']  # 'ş', 'ç'
     soft = ['a', 'i', 'o', 'u', 'e', 'ō']
     hard = ['r', 'l', 's', 't', 'n', 'm', 'q', 'k', 'y', 'h', 'b', 'd', 'z', 'v', 'p', 'f', 'g', 'j', 'ḡ', 'x', 'c']
-else:
+if dataset == "en":
     letters = ['e', 'a', 's', 'o', 'r', 'l', 't', 'i', 'd', 'n', 'c', 'u', 'b', 'p', 'm', 'h', 'g', 'f', 'y', 'k', 'w', 'v', 'x', 'z', 'j', 'q']  #  english
     soft = ['e', 'a', 'o', 'i', 'u']
     hard = ['s', 'r', 'l', 't', 'd', 'n', 'c', 'b', 'p', 'm', 'h', 'g', 'f', 'y', 'k', 'w', 'v', 'x', 'z', 'j', 'q']
+if dataset == "ru":
+    letters = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'ь', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'p', 'c', 'т', 'ф', 'x', 'ц', 'ч', 'ш', 'щ', 'ъ']  #  russian
+    soft = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'ь']
+    hard = ['б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'p', 'c', 'т', 'ф', 'x', 'ц', 'ч', 'ш', 'щ', 'ъ']
 
 cc = 7  # cubic count
 lc = len(letters) # length of alphabet
@@ -102,23 +106,32 @@ for app in range(2):
         my_letters = letters.copy()
         last_bi = ""
         last_bi_ind = 0
+        # for i in bi_freq:
+        #     if i[0] in my_letters:
+        #         my_letters.remove(i[0])
+        #         if not my_letters:
+        #             last_bi = i
+        #             break
+        #     if i[1] in my_letters:
+        #         my_letters.remove(i[1])
+        #         if not my_letters:
+        #             last_bi = i
+        #             break
+        #     last_bi_ind += 1
+        ml = set()
         for i in bi_freq:
-            if i[0] in my_letters:
-                my_letters.remove(i[0])
-                if not my_letters:
-                    last_bi = i
-                    break
-            if i[1] in my_letters:
-                my_letters.remove(i[1])
-                if not my_letters:
-                    last_bi = i
-                    break
+            ml.add(i[0])
+            ml.add(i[1])
+            last_bi = i
             last_bi_ind += 1
-        last_bi_ind += 1 # after break must add 1
+            if ml == set(letters):
+                break
+        # last_bi_ind += 1 # after break must add 1
         print(last_bi)
         print(last_bi_ind)
 
         new_bi_freq = dict(list(bi_freq.items())[0:last_bi_ind])
+
         print(new_bi_freq)
 
         dubl = []
@@ -141,7 +154,6 @@ for app in range(2):
                 #     dubl = soft + list(hard)[:cc*6-lc-len(soft)]
 
         print("dubl="+",".join(dubl))
-        new_bi_freq = dict(list(bi_freq.items())[0:last_bi_ind])
 
         cubletter = ""
         new_dbl = [] # sorted by bigram order
@@ -182,6 +194,12 @@ for app in range(2):
                     cubes[i].append(cubletter[cnt])
                     cnt += 1
 
+        # for i in range(cc):
+        #     for j in range(6):
+        #         print(cubes[i][j], ' ')
+        #     print(" newline \n ")
+        print("notall=", cubes)
+
         cnt1 = 0
         di = 0
         for i in range(6):
@@ -191,7 +209,8 @@ for app in range(2):
                     cubes[j].append(new_dbl[di])
                     di += 1
                 cnt1 += 1
-
+        print("notall=", cubes)
+        exit()
         print("Approach -", app, ", Iteration - ", iteration)
         with open("result/test_"+dataset+"/"+str(cc)+"cub/train_res_app"+str(app)+"_it" + str(iteration), "w", encoding="utf8") as file:
             for i in range(cc):
