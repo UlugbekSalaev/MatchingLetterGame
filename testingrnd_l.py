@@ -1,9 +1,11 @@
-cc = 6  # cubes count
-dataset = "en"
+# 2-chi execute fayl
+# random tanlab olingan kubiklar yordamida qancha suzni (datasetdagi suzlardan) yasab bilishini hisoblash
+# random kubiklar yordamida yasalgan suzlarni fayldan uqib olib sanab chiqish
+cc = 8  # cubes count
 for app in range(2):
-    for iteration in range(5):
+    for iteration in range(1):
 
-        with open("result/test_"+dataset+"/test"+str(iteration), encoding="utf8") as file:   #
+        with open("words_en", encoding="utf8") as file:   #
             lines = file.readlines()
             words_c = [line.rstrip().split(',')[0] for line in lines]
         t3 = 0
@@ -17,7 +19,7 @@ for app in range(2):
             if len(i) == 5:
                 t5 += 1
 
-        with open("result/test_"+dataset+"/"+str(cc)+"cub/test_res_app"+str(app)+"_it"+str(iteration), encoding="utf8") as file: #
+        with open("result/testrnd_en/test_res_app"+str(app), encoding="utf8") as file: #
             lines = file.readlines()
             words_c = [line.rstrip().split(',')[0] for line in lines]
         cnt3 = 0
