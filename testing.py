@@ -1,13 +1,15 @@
 from itertools import permutations
 import operator
 
-dataset = "en"
+dataset = "ru"
 
 if dataset == "uz":
     soft = ['a', 'i', 'o', 'u', 'e', 'ō']    # uz
-else:
+if dataset == "en":
     soft = ['e', 'a', 'o', 'i', 'u']      # en
-cc = 6
+if dataset == "ru":
+    soft = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'ь']      # ru
+cc = 8
 cubics = []
 words = []
 

@@ -1,5 +1,5 @@
-cc = 6  # cubes count
-dataset = "en"
+cc = 8  # cubes count
+dataset = "ru"
 for app in range(2):
     for iteration in range(5):
 
@@ -32,4 +32,4 @@ for app in range(2):
                 cnt5 += 1
         print(app, '\t', iteration, '\t', (t3+t4+t5), '\t', t3, '\t', t4, '\t', t5, '\t')
         print(app, '\t', iteration, '\t', (cnt3+cnt4+cnt5), '\t', cnt3, '\t', cnt4, '\t', cnt5, '\t')
-        print(app, '\t', iteration, '\t', round(len(words_c) / (t3 + t4 + t5) * 100, 3), '\t', round(cnt3 / t3 * 100, 3), '\t', round(cnt4 / t4 * 100, 3), '\t', round(cnt5 / t5 * 100, 3), '\t')
+        print(app, '\t', iteration, '\t', round(len(words_c) / (t3 + t4 + t5) * 100, 1), '%\t', round(cnt3 / t3 * 100, 3), '\t', round(cnt4 / t4 * 100, 3), '\t', round(cnt5 / t5 * 100, 3), '\t')
