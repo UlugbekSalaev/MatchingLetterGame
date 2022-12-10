@@ -1,5 +1,5 @@
 # letter analysis at the word
-dataset = "en"
+dataset = "ru"
 if dataset == "uz":
     letters = ['a', 'i', 'o', 'r', 'l', 's', 't', 'u', 'n', 'm', 'q', 'k', 'y', 'h', 'b', 'e', 'd', 'z', 'v', 'ō', 'p', 'f', 'g', 'j', 'ḡ', 'x', 'c']  # 'ş', 'ç'
     soft = ['a', 'i', 'o', 'u', 'e', 'ō']
