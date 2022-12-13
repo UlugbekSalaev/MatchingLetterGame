@@ -9,7 +9,7 @@ if dataset == "en":
     soft = ['e', 'a', 'o', 'i', 'u']      # en
 if dataset == "ru":
     soft = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'ь']      # ru
-cc = 8
+cc = 5
 cubics = []
 words = []
 
@@ -32,6 +32,14 @@ for app in range(2):
             cubics = [line.rstrip().split() for line in lines]
 
         # checking restrictions
+        all_softs = 0
+        for i in cubics:
+            for j in i:
+                if j in soft:
+                    all_softs += 1
+        per_max_soft = int(all_softs / cc) +1
+        per_min_soft = int(all_softs / cc)
+        # print("Per softs = ", per_min_soft, per_max_soft, all_softs, all_softs % cc)
         for i in cubics:
             ss = set(i)
             if len(ss) != len(i):
@@ -40,12 +48,14 @@ for app in range(2):
             for j in i:
                 if j in soft:
                     sc += 1
-            if app == 0:
-                if sc>2:
-                    print("There is more vowel in cubic:", i)
-            else:
-                if sc>3:
-                    print("There is more vowel in cubic:", i)
+            # if app == 0:
+            #     if sc>2:
+            #         print("There is more vowel in cubic:", i)
+            # else:
+            #     if sc>3:
+            #         print("There is more vowel in cubic:", i)
+            if sc > per_max_soft: #sc < per_min_soft or
+                print("Vowel not in min_max range in cubic:", i)
         card_words_cnt = {}
 
         for word in words:

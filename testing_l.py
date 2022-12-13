@@ -1,4 +1,4 @@
-cc = 8  # cubes count
+cc = 5  # number of cubes
 dataset = "ru"
 for app in range(2):
     for iteration in range(5):

@@ -19,7 +19,7 @@ if dataset == "ru":
     soft = ['а', 'о', 'е', 'и', 'у', 'ь', 'ё', 'я', 'ы', 'ю', 'э']
     hard = ['б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ']
 
-cc = 8  # cubic count
+cc = 5  # cubic count
 lc = len(letters) # length of alphabet
 print("Len of the alphabet="+str(len(letters)))
 
@@ -78,20 +78,20 @@ test = [[],[],[],[],[]]
 #     train[4] = words[1204:]
 #     test[4]  = words[:1204]
 # if dataset == "ru":
-#     train[0] = words[:2456]
-#     test[0]  = words[2456:]
+#     train[0] = words[:3448]
+#     test[0]  = words[3448:]
 #
-#     train[1] = words[:1842] + words[2456:]
-#     test[1]  = words[1842:2456]
+#     train[1] = words[:2586] + words[3448:]
+#     test[1]  = words[2586:3448]
 #
-#     train[2] = words[:1228] + words[1842:]
-#     test[2]  = words[1228:1842]
+#     train[2] = words[:1724] + words[2586:]
+#     test[2]  = words[1724:2586]
 #
-#     train[3] = words[:614] + words[1228:]
-#     test[3]  = words[614:1228]
+#     train[3] = words[:862] + words[1724:]
+#     test[3]  = words[862:1724]
 #
-#     train[4] = words[567:]
-#     test[4]  = words[:567]
+#     train[4] = words[862:]
+#     test[4]  = words[:862]
 
 for iteration in range(5):
     # with open("test" + str(iteration), "w", encoding="utf8") as file:
@@ -175,7 +175,7 @@ for app in range(2):
                 if dataset == "en":
                     dubl = soft + ['e', 'a', 'o', 'i'] + hard   # en
                 if dataset == "ru":
-                    dubl = ['а','о','е'] + soft + hard # ru
+                    dubl = soft+ ['а','о','е'] + hard # ru
                 # dubl = dubl[:cc*6-lc]
                 dubl = dubl[:cc*6-len(letter_frq)]
 
@@ -218,28 +218,56 @@ for app in range(2):
 
         cubes =[]
         cubes = [[] for i in range(cc)]
-        cnt=0
+        #  --------------new version to cubes ----------
+        cubletter1 = cubletter + "".join(new_dbl)
+        print(cubletter1)
+        scub = hcub = ""
+        for i in cubletter1:
+            if i in soft:
+                scub = scub + i
+            else:
+                hcub = hcub + i
+        print(scub, hcub)
+        cubletter1 = scub + hcub
+
         for j in range(6):
             for i in range(cc):
-                if len(cubletter)>cnt:
-                    cubes[i].append(cubletter[cnt])
-                    cnt += 1
+                ii = 0
+                while ii<len(cubletter1):
+                    if cubletter1[ii:ii+1] not in cubes[i]:
+                        cubes[i].append(cubletter1[ii:ii+1])
+                        cubletter1 = cubletter1[:ii] + cubletter1[ii+1:]
+                        break
+                    else:
+                        ii =+ 1
+                if ii== len(cubletter1):
+                    cubes[i].append(cubletter1[0:1])
+                    cubletter1 = cubletter1[:0] + cubletter1[1:]
+
+        print("Qolgan harfla=", cubletter1)
 
         # for i in range(cc):
         #     for j in range(6):
-        #         print(cubes[i][j], ' ')
-        #     print(" newline \n ")
-        # print("notall=", cubes)
+        #         print(cubes[i][j], end='\t')
+        #     print()
+        # exit()
 
-        cnt1 = 0
-        di = 0
-        for i in range(6):
-            for j in range(cc):
-                if cnt1 >= cnt:
-                    # if cubletter[cnt1] in cubes[j]
-                    cubes[j].append(new_dbl[di])
-                    di += 1
-                cnt1 += 1
+        # cnt=0
+        # for j in range(6):
+        #     for i in range(cc):
+        #         if len(cubletter)>cnt:
+        #             cubes[i].append(cubletter[cnt])
+        #             cnt += 1
+
+        # cnt1 = 0
+        # di = 0
+        # for i in range(6):
+        #     for j in range(cc):
+        #         if cnt1 >= cnt:
+        #             # if cubletter[cnt1] in cubes[j]
+        #             cubes[j].append(new_dbl[di])
+        #             di += 1
+        #         cnt1 += 1
 
         print("Approach -", app, ", Iteration - ", iteration)
         with open("result/test_"+dataset+"/"+str(cc)+"cub/train_res_app"+str(app)+"_it" + str(iteration), "w", encoding="utf8") as file:
