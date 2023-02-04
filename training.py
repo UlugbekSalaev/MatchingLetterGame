@@ -5,7 +5,7 @@ from itertools import combinations
 import operator
 import random
 
-dataset = "ru"  # en, uz, ru
+dataset = "sl"  # en, uz, ru
 if dataset == "uz":
     letters = ['a', 'i', 'o', 'r', 'l', 's', 't', 'u', 'n', 'm', 'q', 'k', 'y', 'h', 'b', 'e', 'd', 'z', 'v', 'ō', 'p', 'f', 'g', 'j', 'ḡ', 'x', 'c']  # 'ş', 'ç'
     soft = ['a', 'i', 'o', 'u', 'e', 'ō']
@@ -18,32 +18,39 @@ if dataset == "ru":
     letters = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'ь', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ']  #  russian
     soft = ['а', 'о', 'е', 'и', 'у', 'ь', 'ё', 'я', 'ы', 'ю', 'э']
     hard = ['б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ']
+if dataset == "sl":
+    letters = ['a', 'b', 'c', 'č', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 'š', 't', 'u', 'v', 'z', 'ž']  #  sloven
+    soft = ['a', 'e', 'o', 'i', 'u']
+    hard =  ['b', 'c', 'č', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 'š', 't', 'v', 'z', 'ž']  #  english
 
 cc = 5  # cubic count
 lc = len(letters) # length of alphabet
 print("Len of the alphabet="+str(len(letters)))
 
-# words = []
-# with open("words_"+dataset, encoding="utf8") as file:
-#     lines = file.readlines()
-# words = [line.rstrip() for line in lines]
-# letter_frq = {}
-# obsh=0
-# for word in words:
-#     for c in word:
-#         obsh+=1
-#         if c in letter_frq:
-#             letter_frq[c] += 1
-#         else:
-#             letter_frq[c] = 1
-# print(letter_frq)
+words = []
+with open("words_"+dataset, encoding="utf8") as file:
+    lines = file.readlines()
+words = [line.rstrip() for line in lines]
+letter_frq = {}
+obsh=0
+print(len(words))
+for word in words:
+    for c in word:
+        obsh+=1
+        if c in letter_frq:
+            letter_frq[c] += 1
+        else:
+            letter_frq[c] = 1
+print(letter_frq)
 # print(obsh)
-# exit()
+# for x,y in letter_frq.items():
+#     print(x, '\t', y)
 
 # ## get datasets as training and test dataset
-# random.shuffle(words)
-# k = 5
-# print(words)
+random.shuffle(words)
+k = 5
+print(words)
+
 #
 train = [[],[],[],[],[]]
 test = [[],[],[],[],[]]
@@ -92,6 +99,21 @@ test = [[],[],[],[],[]]
 #
 #     train[4] = words[862:]
 #     test[4]  = words[:862]
+# if dataset == "sl":
+#     train[0] = words[:5024]
+#     test[0]  = words[5024:]
+#
+#     train[1] = words[:3768] + words[5024:]
+#     test[1]  = words[3768:5024]
+#
+#     train[2] = words[:2512] + words[3768:]
+#     test[2]  = words[2512:3768]
+#
+#     train[3] = words[:1256] + words[2512:]
+#     test[3]  = words[1256:2512]
+#
+#     train[4] = words[1256:]
+#     test[4]  = words[:1256]
 
 for iteration in range(5):
     # with open("test" + str(iteration), "w", encoding="utf8") as file:
@@ -107,7 +129,7 @@ for iteration in range(5):
 
 for app in range(2):
     for iteration in range(5):
-
+        print("app=",app, "iter=", iteration)
         letter_frq = {}
         bi_freq = {}
         for word in train[iteration]:
@@ -128,7 +150,6 @@ for app in range(2):
 
         letter_frq = dict(sorted(letter_frq.items(), key=operator.itemgetter(1), reverse=True))
         bi_freq = dict(sorted(bi_freq.items(), key=operator.itemgetter(1), reverse=True))
-        print(letter_frq)
 
         my_letters = letters.copy()
         last_bi = ""
@@ -176,6 +197,8 @@ for app in range(2):
                     dubl = soft + ['e', 'a', 'o', 'i'] + hard   # en
                 if dataset == "ru":
                     dubl = soft+ ['а','о','е'] + hard # ru
+                if dataset == "sl":
+                    dubl = soft+ ['a', 'e', 'o', 'i'] + hard # ru
                 # dubl = dubl[:cc*6-lc]
                 dubl = dubl[:cc*6-len(letter_frq)]
 

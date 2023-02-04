@@ -1,7 +1,7 @@
 from itertools import permutations
 import operator
 
-dataset = "ru"
+dataset = "sl"
 
 if dataset == "uz":
     soft = ['a', 'i', 'o', 'u', 'e', 'ō']    # uz
@@ -9,7 +9,9 @@ if dataset == "en":
     soft = ['e', 'a', 'o', 'i', 'u']      # en
 if dataset == "ru":
     soft = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'ь']      # ru
-cc = 5
+if dataset == "sl":
+    soft = ['a', 'e', 'o', 'i', 'u']      # sl
+cc = 8
 cubics = []
 words = []
 

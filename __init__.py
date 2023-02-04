@@ -28,7 +28,7 @@ print("Count of all available cubics generated from letters = " + str(len(cubics
 #     break
 
 words = []
-with open("words_uz", encoding="utf8") as file:
+with open("Dataset/words_uz", encoding="utf8") as file:
     lines = file.readlines()
 words = [line.rstrip() for line in lines]
 
