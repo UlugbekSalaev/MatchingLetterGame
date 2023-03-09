@@ -4,8 +4,11 @@ from nltk import ngrams
 from itertools import combinations
 import operator
 import random
+import time
 
-dataset = "sl"  # en, uz, ru
+dataset = "sl"  # uz, en, ru, sl
+cc = 8  # cubic count 5-8
+
 if dataset == "uz":
     letters = ['a', 'i', 'o', 'r', 'l', 's', 't', 'u', 'n', 'm', 'q', 'k', 'y', 'h', 'b', 'e', 'd', 'z', 'v', 'ō', 'p', 'f', 'g', 'j', 'ḡ', 'x', 'c']  # 'ş', 'ç'
     soft = ['a', 'i', 'o', 'u', 'e', 'ō']
@@ -23,37 +26,37 @@ if dataset == "sl":
     soft = ['a', 'e', 'o', 'i', 'u']
     hard =  ['b', 'c', 'č', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 'š', 't', 'v', 'z', 'ž']  #  english
 
-cc = 5  # cubic count
 lc = len(letters) # length of alphabet
-print("Len of the alphabet="+str(len(letters)))
+# print("Len of the alphabet="+str(len(letters)))
 
-words = []
-with open("words_"+dataset, encoding="utf8") as file:
-    lines = file.readlines()
-words = [line.rstrip() for line in lines]
-letter_frq = {}
-obsh=0
-print(len(words))
-for word in words:
-    for c in word:
-        obsh+=1
-        if c in letter_frq:
-            letter_frq[c] += 1
-        else:
-            letter_frq[c] = 1
-print(letter_frq)
+# words = []
+# with open("words_"+dataset, encoding="utf8") as file:
+#     lines = file.readlines()
+# words = [line.rstrip() for line in lines]
+# letter_frq = {}
+# obsh=0
+# print(len(words))
+# for word in words:
+#     for c in word:
+#         obsh+=1
+#         if c in letter_frq:
+#             letter_frq[c] += 1
+#         else:
+#             letter_frq[c] = 1
+
+# print(letter_frq)
 # print(obsh)
 # for x,y in letter_frq.items():
 #     print(x, '\t', y)
 
 # ## get datasets as training and test dataset
-random.shuffle(words)
-k = 5
-print(words)
+# random.shuffle(words)
+# k = 5
+# print(words)
 
 #
 train = [[],[],[],[],[]]
-test = [[],[],[],[],[]]
+# test = [[],[],[],[],[]]
 # if dataset == "uz":
 #     train[0] = words[:3648]
 #     test[0]  = words[3648:]
@@ -128,8 +131,10 @@ for iteration in range(5):
     train[iteration] = [line.rstrip() for line in lines]
 
 for app in range(2):
+    total_time = 0
     for iteration in range(5):
-        print("app=",app, "iter=", iteration)
+        start_time = time.time()
+        # print("app=",app, "iter=", iteration)
         letter_frq = {}
         bi_freq = {}
         for word in train[iteration]:
@@ -175,12 +180,12 @@ for app in range(2):
             if ml == set(letters):
                 break
         # last_bi_ind += 1 # after break must add 1
-        print(last_bi)
-        print(last_bi_ind)
+        # print(last_bi)
+        # print(last_bi_ind)
 
         new_bi_freq = dict(list(bi_freq.items())[0:last_bi_ind])
 
-        print(new_bi_freq)
+        # print(new_bi_freq)
 
         dubl = []
         if cc*6 - lc > 0:
@@ -207,7 +212,7 @@ for app in range(2):
                 # else:
                 #     dubl = soft + list(hard)[:cc*6-lc-len(soft)]
 
-        print("dubl="+",".join(dubl))
+        # print("dubl="+",".join(dubl))
 
         cubletter = ""
         new_dbl = [] # sorted by bigram order
@@ -235,22 +240,22 @@ for app in range(2):
                     new_dbl.append(i[1])
 
         new_dbl = new_dbl + dubl
-        print(cubletter)
+        # print(cubletter)
 
-        print("new dubl=" + ",".join(new_dbl))
+        # print("new dubl=" + ",".join(new_dbl))
 
         cubes =[]
         cubes = [[] for i in range(cc)]
         #  --------------new version to cubes ----------
         cubletter1 = cubletter + "".join(new_dbl)
-        print(cubletter1)
-        scub = hcub = ""
+        # print(cubletter1)
+        scub = hcub = ""  # scub = soft letter cub, hcub = hard letter cube
         for i in cubletter1:
             if i in soft:
                 scub = scub + i
             else:
                 hcub = hcub + i
-        print(scub, hcub)
+        # print(scub, hcub)
         cubletter1 = scub + hcub
 
         for j in range(6):
@@ -262,12 +267,12 @@ for app in range(2):
                         cubletter1 = cubletter1[:ii] + cubletter1[ii+1:]
                         break
                     else:
-                        ii =+ 1
+                        ii = ii + 1
                 if ii== len(cubletter1):
                     cubes[i].append(cubletter1[0:1])
                     cubletter1 = cubletter1[:0] + cubletter1[1:]
 
-        print("Qolgan harfla=", cubletter1)
+        # print("Qolgan harfla=", cubletter1)
 
         # for i in range(cc):
         #     for j in range(6):
@@ -303,7 +308,10 @@ for app in range(2):
                 print(cubes[i][j], end='\t')
             print()
 
-        # checking errors in words' letter
-        for i in letter_frq:
-            if i not in letters:
-                print("Errors by mismatch between word letter and letters letter " + i)
+        # # checking errors in words' letter
+        # for i in letter_frq:
+        #     if i not in letters:
+        #         print("Errors by mismatch between word letter and letters letter " + i)
+        total_time = total_time + (time.time() - start_time)
+    print("--- %s seconds ---" % (total_time/5))
+    print("--- %s seconds ---" % (total_time))

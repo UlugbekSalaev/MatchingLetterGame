@@ -1,5 +1,5 @@
 cc = 8  # number of cubes
-dataset = "sl"
+dataset = "uz"
 for app in range(2):
     for iteration in range(5):
 
