@@ -2,3 +2,11 @@ Run program in following order:
 1. training.py
 2. testing.py
 3. testing_l.py
+
+french
+turkish
+kazakh
+spain
+polish
+karapalpak
+

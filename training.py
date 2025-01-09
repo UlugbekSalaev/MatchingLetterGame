@@ -25,6 +25,11 @@ if dataset == "sl":
     letters = ['a', 'b', 'c', 'č', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 'š', 't', 'u', 'v', 'z', 'ž']  #  sloven
     soft = ['a', 'e', 'o', 'i', 'u']
     hard =  ['b', 'c', 'č', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 'š', 't', 'v', 'z', 'ž']  #  english
+if dataset == "fr":
+    letters = []  #  french
+    soft = []
+    hard =  []  #  french
+
 
 lc = len(letters) # length of alphabet
 # print("Len of the alphabet="+str(len(letters)))
