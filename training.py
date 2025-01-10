@@ -6,7 +6,7 @@ import operator
 import random
 import time
 
-dataset = "sl"  # uz, en, ru, sl
+dataset = "tt"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
 cc = 8  # cubic count 5-8
 
 if dataset == "uz":
@@ -25,11 +25,38 @@ if dataset == "sl":
     letters = ['a', 'b', 'c', 'č', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 'š', 't', 'u', 'v', 'z', 'ž']  #  sloven
     soft = ['a', 'e', 'o', 'i', 'u']
     hard =  ['b', 'c', 'č', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 'š', 't', 'v', 'z', 'ž']  #  english
+if dataset == "de":
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'ä', 'ö', 'ü', 'ß']  #  german
+    soft = ['a', 'e', 'i', 'o', 'u', 'ä', 'ö', 'ü']
+    hard = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z', 'ß']
+if dataset == "es":
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']  # spanish
+    soft = ['a', 'e', 'i',  'o', 'u']
+    hard = [ 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'ñ', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
 if dataset == "fr":
-    letters = []  #  french
-    soft = []
-    hard =  []  #  french
-
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'é', 'è', 'ê', 'ë', 'ç', 'à', 'â', 'æ', 'ï', 'ô', 'û', 'œ', 'î', 'ÿ']  #  french
+    soft = ['a', 'e', 'i', 'o', 'u', 'y', 'é', 'è', 'ê', 'ë', 'à', 'â', 'æ', 'ï', 'ô', 'û', 'œ', 'î', 'ÿ']
+    hard = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z', 'ç']
+if dataset == "kz":
+    letters = ['ә', 'ғ', 'қ', 'ң', 'ө', 'ұ', 'ү', 'һ', 'і', 'а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'ь', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ']  #  german
+    soft = ['ә', 'ө', 'і', 'а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'ь']
+    hard = ['ғ', 'қ', 'ң', 'ұ', 'ү', 'һ', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ']
+if dataset == "ms":
+    letters = ['a',	'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']  # malay
+    soft = ['a', 'e', 'i', 'o', 'u']
+    hard = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z']
+if dataset == "pl":
+    letters = ['a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n', 'ń', 'o', 'ó', 'p', 'r', 's', 'ś', 't', 'u', 'w', 'y', 'z', 'ź', 'ż']  # polish
+    soft = ['a', 'ą', 'e', 'ę', 'i', 'o', 'ó', 'u', 'y']
+    hard = ['b', 'c', 'ć', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ł', 'm', 'n', 'ń', 'p', 'r', 's', 'ś', 't', 'w', 'z', 'ź', 'ż']
+if dataset == "tr":
+    letters = ['a', 'e', 'ı', 'i', 'o', 'ö', 'u', 'ü', 'b', 'c', 'ç', 'd', 'f', 'g', 'ğ', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 'ş', 't', 'v', 'y', 'z']  # turkish
+    soft = ['a', 'e', 'ı', 'i', 'o', 'ö', 'u', 'ü']
+    hard = ['b', 'c', 'ç', 'd', 'f', 'g', 'ğ', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 'ş', 't', 'v', 'y', 'z']
+if dataset == "tt":
+    letters = ['а', 'ә', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'җ', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'ң', 'о', 'ө', 'п', 'р', 'с', 'т', 'у', 'ү', 'ф', 'х', 'һ', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я']  #  tatar
+    soft = ['а', 'ә', 'е', 'и', 'о', 'ө', 'у', 'ү', 'ы']
+    hard = ['ё', 'б', 'в', 'г', 'д', 'ж', 'җ', 'з', 'й', 'к', 'л', 'м', 'н', 'ң', 'п', 'р', 'с', 'т', 'ф', 'х', 'һ', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ь', 'э', 'ю', 'я']
 
 lc = len(letters) # length of alphabet
 # print("Len of the alphabet="+str(len(letters)))
@@ -209,6 +236,24 @@ for app in range(2):
                     dubl = soft+ ['а','о','е'] + hard # ru
                 if dataset == "sl":
                     dubl = soft+ ['a', 'e', 'o', 'i'] + hard # ru
+
+                if dataset == "de":
+                    dubl = soft+ ['e', 'a', 'i'] + hard
+                if dataset == "fr":
+                    dubl = soft+ ['a', 'e', 'i', 'o'] + hard
+                if dataset == "ms":
+                    dubl = soft+ ['a', 'i', 'e', 'u', 'o'] + hard
+                if dataset == "pl":
+                    dubl = soft + ['a', 'o', 'i', 'e'] + hard
+                if dataset == "kz":
+                    dubl = soft+ ['а', 'е', 'ы'] + hard
+                if dataset == "tr":
+                    dubl = soft + ['a', 'e', 'i'] + hard
+                if dataset == "tt":
+                    dubl = soft + ['а', 'е', 'ә'] + hard
+                if dataset == "es":
+                    dubl = soft + ['a', 'o', 'e'] + hard
+
                 # dubl = dubl[:cc*6-lc]
                 dubl = dubl[:cc*6-len(letter_frq)]
 
@@ -320,3 +365,5 @@ for app in range(2):
         total_time = total_time + (time.time() - start_time)
     print("--- %s seconds ---" % (total_time/5))
     print("--- %s seconds ---" % (total_time))
+
+print("finish")

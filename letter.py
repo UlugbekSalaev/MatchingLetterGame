@@ -1,4 +1,4 @@
-# letter analysis at the word
+# letter analysis at the word. Identify vowel/consonant pattern
 dataset = "sl"
 if dataset == "uz":
     letters = ['a', 'i', 'o', 'r', 'l', 's', 't', 'u', 'n', 'm', 'q', 'k', 'y', 'h', 'b', 'e', 'd', 'z', 'v', 'ō', 'p', 'f', 'g', 'j', 'ḡ', 'x', 'c']  # 'ş', 'ç'
