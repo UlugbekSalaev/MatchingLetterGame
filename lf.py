@@ -2,7 +2,7 @@
 import operator
 # dataset= "fr"
 
-for dataset in ["de", "fr","ms", "pl", "kz", "tr", "tt", "es"]:
+for dataset in ["de", "fr", "ms", "pl", "kz", "tr", "tt", "es"]:
     print(dataset)
     with open("Dataset/words_"+dataset, encoding="utf8") as file:
         lines = file.readlines()
@@ -22,6 +22,6 @@ for dataset in ["de", "fr","ms", "pl", "kz", "tr", "tt", "es"]:
         total += value
     print(total)
     for key, value in letter_frq.items():
-        if value*100/total >= 5:
+        if value*100/total >= 5 or True:
             print(key, '\t', value, round(value*100/total, 1))
 

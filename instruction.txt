@@ -2,3 +2,11 @@ Run program in following order:
 1. training.py
 2. testing.py
 3. testing_l.py
+
+4. comb.py # biz buni xam ishlatishimiz mumkin, bunda optimallashtirilgan metod bn training/test qilish bor.
+
+time complexity jadvali (uning bir ustuni train line count)
+bitta kubikda bir xil xarf uchrasa, bu foydasiz hisoblanadi, shuni uchun uni qoidaga asoslanga dastur yordamida boshqa chastotasi yuqori bulgan harf bn almashtiramiz. (bunga bir algoritm tuzib yuborsak buladi)
+uzbek tilida 2 ta grafika foydaniladi, bunda kirilcha ishlatilmadi.
+fransuz tilida 26 ta harf bor bulsada, unda ligatures xam bor, bu esa xarflarni sparse tarqoqligini hosil qiladi, yani alfabitda harflar soni kup buladi. bunda kam sondagi kubiklar bn suzlarni yasash soni kamayib ketadi.
+

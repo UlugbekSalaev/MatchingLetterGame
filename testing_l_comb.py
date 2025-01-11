@@ -1,11 +1,11 @@
 import statistics as st
 cc = 8  # number of cubes
-dataset = "sl"
+dataset = "uz"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt] # 0 0 0 0 0 2 3 4
 
-t3 = [0,0]
-t4 = [0,0]
-t5 = [0,0]
-for iteration in range(2):
+t3 = [0,0,0,0,0]
+t4 = [0,0,0,0,0]
+t5 = [0,0,0,0,0]
+for iteration in range(1):
     words_c = []
     with open("result/test_" + dataset + "/test" + str(iteration), encoding="utf8") as file:  #
         lines = file.readlines()
@@ -17,17 +17,22 @@ for iteration in range(2):
         elif len(i) == 4:
             t4[iteration] += 1
         else:
-            t5[iteration] = t5[iteration]+1
+            t5[iteration] += 1
 
-for app in range(1008):
-    samplet = []
-    sample3 = []
-    sample4 = []
-    sample5 = []  # sample for 5-fold
+samplet = []  # sample for total
+sample3 = []
+sample4 = []
+sample5 = []  # sample for 5-letter word
 
-    for iteration in range(2):
+for app in range(250):#1008
+    # samplet = []  # sample for total
+    # sample3 = []
+    # sample4 = []
+    # sample5 = []  # sample for 5-letter word
+
+    for iteration in range(1):
         words_c = []
-        with open("result/test_"+dataset+"/"+str(cc)+"cub/comb_words/lf"+str(app)+"_it"+str(iteration), encoding="utf8") as file: #
+        with open("result/test_"+dataset+"/"+str(cc)+"cub/comb_words/vl"+str(app)+"_it"+str(iteration), encoding="utf8") as file: #
             lines = file.readlines()
             words_c = [line.rstrip().split(',')[0] for line in lines]
         cnt3 = 0 # total found sample
@@ -48,6 +53,8 @@ for app in range(1008):
         sample4.append(cnt4/t4[iteration]*100)
         sample5.append(cnt5/t5[iteration]*100)
 
-    if st.mean(samplet) > 92.2:
-        # print(samplet, sample3, sample4, sample5)
-        print(app, '\t', round(st.mean(samplet), 1), '\t', round(st.stdev(samplet),1), '\t', round(st.mean(sample3), 1), '\t', round(st.stdev(sample3),1), '\t', round(st.mean(sample4), 1), '\t', round(st.stdev(sample4),1), '\t', round(st.mean(sample5), 1), '\t', round(st.stdev(sample5),1))
+    # if st.mean(samplet) > 92.2:
+    #     # print(samplet, sample3, sample4, sample5)
+    #     print(app, '\t', round(st.mean(samplet), 1), '\t', round(st.stdev(samplet),1), '\t', round(st.mean(sample3), 1), '\t', round(st.stdev(sample3),1), '\t', round(st.mean(sample4), 1), '\t', round(st.stdev(sample4),1), '\t', round(st.mean(sample5), 1), '\t', round(st.stdev(sample5),1))
+
+print(dataset, '\t', round(max(samplet), 1),  '\t', round(st.mean(samplet), 1), '\t', round(st.pstdev(samplet),2), '\t', round(st.mean(sample3), 1), '\t', round(st.pstdev(sample3),2), '\t', round(st.mean(sample4), 1), '\t', round(st.pstdev(sample4),2), '\t', round(st.mean(sample5), 1), '\t', round(st.pstdev(sample5),2))
