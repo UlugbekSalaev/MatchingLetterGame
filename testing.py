@@ -1,8 +1,8 @@
 from itertools import permutations
 import operator
 
-dataset = "fr"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
-cc = 8  # cubic count 5-8
+dataset = "uz"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
+cc = 9  # cubic count 5-8
 print(dataset + " " + str(cc) + "cub")
 
 if dataset == "uz":
@@ -45,11 +45,11 @@ for app in range(2):
     for iteration in range(5):
         print("App=", app, " iteration=", iteration)
 
-        with open("result/test_" + dataset + "/test" + str(iteration), encoding="utf8") as file:
+        with open("result_67/test_" + dataset + "/test" + str(iteration), encoding="utf8") as file:
             lines = file.readlines()
         words = [line.rstrip() for line in lines]
 
-        with open("result/test_" + dataset + "/" + str(cc) + "cub/train_res_app" + str(app) + "_it" + str(iteration),
+        with open("result_67/test_" + dataset + "/" + str(cc) + "cub/train_res_app" + str(app) + "_it" + str(iteration),
                   encoding="utf8") as file:  # one row is cubic's letter
             lines = file.readlines()
             cubics = [line.rstrip().split() for line in lines]
@@ -93,7 +93,7 @@ for app in range(2):
                         card_words_cnt[word] = 1
 
         card_words_cnt = dict(sorted(card_words_cnt.items(), key=operator.itemgetter(1), reverse=True))
-        with open("result/test_" + dataset + "/" + str(cc) + "cub/test_res_app" + str(app) + "_it" + str(iteration),
+        with open("result_67/test_" + dataset + "/" + str(cc) + "cub/test_res_app" + str(app) + "_it" + str(iteration),
                   "w", encoding="utf8") as file:
             for i in card_words_cnt:
                 file.writelines(i + "," + str(card_words_cnt[i]) + "\n")

@@ -1,5 +1,5 @@
 # check all letter from dataset is exist in alphabet of this language
-dataset = "tr"
+dataset = "en"
 if dataset == "uz":
     letters = ['a', 'i', 'o', 'r', 'l', 's', 't', 'u', 'n', 'm', 'q', 'k', 'y', 'h', 'b', 'e', 'd', 'z', 'v', 'ō', 'p', 'f', 'g', 'j', 'ḡ', 'x', 'c']  # 'ş', 'ç'
     soft = ['a', 'i', 'o', 'u', 'e', 'ō']
@@ -12,6 +12,10 @@ if dataset == "ru":
     letters = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'ь', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ']  #  russian
     soft = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я', 'ь']
     hard = ['б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ']
+if dataset == "sl":
+    letters = ['a', 'b', 'c', 'č', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 'š', 't', 'u', 'v', 'z', 'ž']  #  sloven
+    soft = ['a', 'e', 'o', 'i', 'u']
+    hard = ['b', 'c', 'č', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 'š', 't', 'v', 'z', 'ž']  #  english
 if dataset == "fr":
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'é', 'è', 'ê', 'ë', 'ç', 'à', 'â', 'æ', 'ï', 'ô', 'û', 'œ', 'î', 'ÿ']  #  french
     soft = ['a', 'e', 'i', 'o', 'u', 'y', 'é', 'è', 'ê', 'ë', 'à', 'â', 'æ', 'ï', 'ô', 'û', 'œ', 'î', 'ÿ']
@@ -45,11 +49,11 @@ if dataset == "tr":
     soft = ['a', 'e', 'ı', 'i', 'o', 'ö', 'u', 'ü']
     hard = ['b', 'c', 'ç', 'd', 'f', 'g', 'ğ', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 'ş', 't', 'v', 'y', 'z']
 
-with open("dataset_prep/words_"+dataset, encoding="utf8") as file:
+with open("dataset_prep/6letter/words_"+dataset, encoding="utf8") as file:
     lines = file.readlines()
 words = [line.rstrip() for line in lines]
 
-f = open("dataset_prep/words_done_"+dataset, "w", encoding="utf8")
+f = open("dataset_prep/6letter/words_done_"+dataset, "w", encoding="utf8")
 
 for word in words:
     w = True
@@ -58,7 +62,8 @@ for word in words:
             print(char)
             w = False
             break;
-    if w and 2 < len(word) < 6:
+    # if w and 2 < len(word) < 6:
+    if w and 5 < len(word) < 8:
         f.write(word+"\n")
 f.close()
 

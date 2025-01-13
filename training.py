@@ -6,8 +6,8 @@ import operator
 import random
 import time
 
-dataset = "fr"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
-cc = 8  # cubic count 5-8
+dataset = "uz"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
+cc = 9  # cubic count 5-8
 
 if dataset == "uz":
     letters = ['a', 'i', 'o', 'r', 'l', 's', 't', 'u', 'n', 'm', 'q', 'k', 'y', 'h', 'b', 'e', 'd', 'z', 'v', 'ō', 'p', 'f', 'g', 'j', 'ḡ', 'x', 'c']  # 'ş', 'ç'
@@ -158,7 +158,7 @@ for iteration in range(5):
     #     for i in train[iteration]:
     #         file.writelines(i + "\n")
     # continue
-    with open("result/test_"+dataset + "/train" + str(iteration), encoding="utf8") as file:
+    with open("result_67/test_"+dataset + "/train" + str(iteration), encoding="utf8") as file:
         lines = file.readlines()
     train[iteration] = [line.rstrip() for line in lines]
 
@@ -348,7 +348,7 @@ for app in range(2):
         #         cnt1 += 1
 
         print("Approach -", app, ", Iteration - ", iteration)
-        with open("result/test_"+dataset+"/"+str(cc)+"cub/train_res_app"+str(app)+"_it" + str(iteration), "w", encoding="utf8") as file:
+        with open("result_67/test_"+dataset+"/"+str(cc)+"cub/train_res_app"+str(app)+"_it" + str(iteration), "w", encoding="utf8") as file:
             for i in range(cc):
                 for j in range(6):
                     file.write(cubes[i][j] + '\t')

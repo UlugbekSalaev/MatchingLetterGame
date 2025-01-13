@@ -38,8 +38,8 @@ def process_single_dataset(file_path, output_path, num_folds=5):
         print(f"Processed fold {fold_number - 1} for file {base_filename}")
 
 # Running part of function
-dataset = 'fr'
-process_single_dataset('Dataset/words_'+dataset, 'result/test_'+dataset)
+dataset = 'uz'
+process_single_dataset('Dataset/6letter/words_'+dataset, 'result_67/test_'+dataset)
 
 
 

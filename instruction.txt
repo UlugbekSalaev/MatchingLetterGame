@@ -1,4 +1,7 @@
 Run program in following order:
+checkalphabet - when prepare a dataset
+
+0. train_test_split.py
 1. training.py
 2. testing.py
 3. testing_l.py
@@ -10,3 +13,4 @@ bitta kubikda bir xil xarf uchrasa, bu foydasiz hisoblanadi, shuni uchun uni qoi
 uzbek tilida 2 ta grafika foydaniladi, bunda kirilcha ishlatilmadi.
 fransuz tilida 26 ta harf bor bulsada, unda ligatures xam bor, bu esa xarflarni sparse tarqoqligini hosil qiladi, yani alfabitda harflar soni kup buladi. bunda kam sondagi kubiklar bn suzlarni yasash soni kamayib ketadi.
 
+6 xarfli suzlarni alohida 7-8-9 ta kubiklar yordamida tekshirish
