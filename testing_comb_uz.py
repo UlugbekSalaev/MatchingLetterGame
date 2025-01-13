@@ -3,7 +3,7 @@ from itertools import permutations
 import operator
 import time
 
-# dataset = "de"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt] # 0 0 0 0 0 2 3 4
+# dataset = "de"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt] # 0 0 0 0 0 2 3 4   # # 1 0 0 2 2 0 2 1
 cc = 8
 start_time = time.time()
 
@@ -14,23 +14,29 @@ def is_exist(word: str, n: int, cubic: tuple):
             return False
     return True
 
+datasets =  ['fr']
+iterations = [4] # 2 4
 
-for dataset in ['tt']:
-    print(dataset)
+for i in range(len(datasets)):
+    print(datasets[i], iterations[i])
+
+    dataset = datasets[i]
+    iteration= iterations[i]
+
     words = [[], [], [], [], []]
-    for iteration in range(4, 5):
-        with open("result/test_" + dataset + "/test" + str(iteration), encoding="utf8") as file:
-            lines = file.readlines()
-        words[iteration] = ([line.rstrip() for line in lines])
 
-    for app in range(250):
+    with open("result/test_" + dataset + "/test" + str(iteration), encoding="utf8") as file:
+        lines = file.readlines()
+    words[iteration] = ([line.rstrip() for line in lines])
+
+    for app in range(104):
         cubics = []
         with open("result/test_" + dataset + "/" + str(cc) + "cub/combinations/vl" + str(app + 1),
                   encoding="utf8") as file:  # one row is cubic's letter
             lines = file.readlines()
             cubics = [line.rstrip().split() for line in lines]
 
-        for iteration in range(4, 5):
+        if True:#for iteration in range(4, 5):
             print(dataset, " App=", app, " iteration=", iteration)
 
             # checking restrictions
@@ -75,7 +81,7 @@ for dataset in ['tt']:
 
             # card_words_cnt = dict(sorted(card_words_cnt.items(), key=operator.itemgetter(1), reverse=True))
             with open(
-                    "result/test_" + dataset + "/" + str(cc) + "cub/comb_words/lf" + str(app) + "_it" + str(iteration),
+                    "result/test_" + dataset + "/" + str(cc) + "cub/comb_words/vl" + str(app) + "_it" + str(iteration),
                     "w", encoding="utf8") as file:
                 for i in card_words_cnt:
                     file.writelines(i + "," + str(card_words_cnt[i]) + "\n")

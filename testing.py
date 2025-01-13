@@ -1,7 +1,7 @@
 from itertools import permutations
 import operator
 
-dataset = "tt"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
+dataset = "fr"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
 cc = 8  # cubic count 5-8
 print(dataset + " " + str(cc) + "cub")
 
@@ -18,7 +18,7 @@ if dataset == "de":
 if dataset == "es":
     soft = ['a', 'e', 'i', 'o', 'u']
 if dataset == "fr":
-    soft = ['a', 'e', 'i', 'o', 'u', 'y', 'é', 'è', 'ê', 'â', 'ï', 'î', 'ô', 'œ', 'û']
+    soft = ['a', 'e', 'i', 'o', 'u', 'y']
 if dataset == "kz":
     soft = ['ә', 'ө', 'і', 'а', 'е', 'и', 'о', 'у', 'ю', 'я', 'ы']
 if dataset == "ms":

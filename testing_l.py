@@ -1,5 +1,5 @@
 # bu dastur testni natijalarini hisoblab chiqish uchun ishlatiladi
-dataset = "tt"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
+dataset = "fr"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
 cc = 8  # cubes number 5-8
 
 for app in range(2):

@@ -1,11 +1,14 @@
 import statistics as st
 cc = 8  # number of cubes
-dataset = "uz"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt] # 0 0 0 0 0 2 3 4
+dataset = "fr"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt] # 0 0 0 0 0 2 3 4
+
+# datasets =  ['de','es','fr','kz','ms','pl','tr','tt']
+# iterations = [1, 0, 0, 2, 2, 0, 2, 1] uz en ru sl 2 2 0 3
 
 t3 = [0,0,0,0,0]
 t4 = [0,0,0,0,0]
 t5 = [0,0,0,0,0]
-for iteration in range(1):
+for iteration in range(4,5):
     words_c = []
     with open("result/test_" + dataset + "/test" + str(iteration), encoding="utf8") as file:  #
         lines = file.readlines()
@@ -24,13 +27,13 @@ sample3 = []
 sample4 = []
 sample5 = []  # sample for 5-letter word
 
-for app in range(250):#1008
+for app in range(104):#1008
     # samplet = []  # sample for total
     # sample3 = []
     # sample4 = []
     # sample5 = []  # sample for 5-letter word
 
-    for iteration in range(1):
+    for iteration in range(4,5):
         words_c = []
         with open("result/test_"+dataset+"/"+str(cc)+"cub/comb_words/vl"+str(app)+"_it"+str(iteration), encoding="utf8") as file: #
             lines = file.readlines()
