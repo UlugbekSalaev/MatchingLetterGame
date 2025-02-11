@@ -49,11 +49,11 @@ if dataset == "tr":
     soft = ['a', 'e', 'ı', 'i', 'o', 'ö', 'u', 'ü']
     hard = ['b', 'c', 'ç', 'd', 'f', 'g', 'ğ', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 'ş', 't', 'v', 'y', 'z']
 
-with open("dataset_prep/6letter/words_"+dataset, encoding="utf8") as file:
+with open("dataset_prep/words_"+dataset, encoding="utf8") as file:
     lines = file.readlines()
 words = [line.rstrip() for line in lines]
 
-f = open("dataset_prep/6letter/words_done_"+dataset, "w", encoding="utf8")
+f = open("dataset_prep/words_done_"+dataset, "w", encoding="utf8")
 
 for word in words:
     w = True

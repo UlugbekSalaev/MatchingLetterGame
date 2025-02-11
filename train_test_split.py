@@ -38,10 +38,9 @@ def process_single_dataset(file_path, output_path, num_folds=5):
         print(f"Processed fold {fold_number - 1} for file {base_filename}")
 
 # Running part of function
-dataset = 'uz'
-process_single_dataset('Dataset/6letter/words_'+dataset, 'result_67/test_'+dataset)
-
-
+datasets = ['de', 'en', 'es', 'fr','kz', 'ms','pl', 'ru', 'sl', 'tr', 'tt', 'uz']
+for dataset in datasets:
+    process_single_dataset('Dataset/words_'+dataset, 'result/test_'+dataset)
 
 # create empty directory to storing result of training
 # for dt in ["de", "fr","ms", "pl", "kz", "tr", "tt", "es"]:

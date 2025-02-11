@@ -6,7 +6,7 @@ import operator
 import random
 import time
 
-dataset = "uz"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
+dataset = "sl"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
 cc = 9  # cubic count 5-8
 
 if dataset == "uz":
@@ -225,6 +225,7 @@ for app in range(2):
             if app == 0:
                 # dubl = list(letter_frq)[:cc*6-lc]
                 dubl = list(letter_frq)[:cc*6-len(letter_frq)]
+                dubl.extend(dubl)
 
             # approach Vowel oriented
             if app == 1:

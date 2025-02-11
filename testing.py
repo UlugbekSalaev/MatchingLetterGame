@@ -1,7 +1,7 @@
 from itertools import permutations
 import operator
 
-dataset = "uz"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
+dataset = "sl" # uz en ms sl  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
 cc = 9  # cubic count 5-8
 print(dataset + " " + str(cc) + "cub")
 

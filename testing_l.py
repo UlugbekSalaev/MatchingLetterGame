@@ -1,6 +1,6 @@
 # bu dastur testni natijalarini hisoblab chiqish uchun ishlatiladi
 import statistics as st
-dataset = "kz"  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
+dataset = "sl"  # uz en ms sl  # [uz,en,ru,sl] new dataset [de,es,fr,kz,ms,pl,tr,tt]
 cc = 9  # cubes number 5-8
 
 for app in range(2):
