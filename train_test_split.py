@@ -2,8 +2,8 @@ import os
 import random
 from sklearn.model_selection import KFold
 
-
 def process_single_dataset(file_path, output_path, num_folds=5):
+    os.makedirs(output_path)
     # Read and shuffle the lines
     with open(file_path, 'r') as file:
         lines = file.readlines()
@@ -28,6 +28,7 @@ def process_single_dataset(file_path, output_path, num_folds=5):
         train_file_path = os.path.join(output_path, f"train{fold_number-1}")
         test_file_path = os.path.join(output_path, f"test{fold_number-1}")
 
+
         # Write the train and test files for this fold
         with open(train_file_path, 'w') as train_file:
             train_file.writelines(train_lines)
@@ -39,8 +40,8 @@ def process_single_dataset(file_path, output_path, num_folds=5):
 
 # Running part of function
 datasets = ['de', 'en', 'es', 'fr','kz', 'ms','pl', 'ru', 'sl', 'tr', 'tt', 'uz']
-for dataset in datasets:
-    process_single_dataset('Dataset/words_'+dataset, 'result/test_'+dataset)
+for dataset in ['uz']:
+    process_single_dataset('Dataset/letter67/words_'+dataset, 'Dataset/letter67_fold/'+dataset)
 
 # create empty directory to storing result of training
 # for dt in ["de", "fr","ms", "pl", "kz", "tr", "tt", "es"]:

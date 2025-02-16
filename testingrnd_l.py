@@ -5,7 +5,7 @@ cc = 8  # cubes count
 for app in range(2):
     for iteration in range(1):
 
-        with open("Dataset/words_en", encoding="utf8") as file:   #
+        with open("Dataset/letter35/words_en", encoding="utf8") as file:   #
             lines = file.readlines()
             words_c = [line.rstrip().split(',')[0] for line in lines]
         t3 = 0

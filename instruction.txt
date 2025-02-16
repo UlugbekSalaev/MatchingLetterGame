@@ -1,5 +1,6 @@
 Run program in following order:
-checkalphabet.py - when prepare a dataset
+0. checkalphabet.py - when prepare a dataset
+0.
 
 0. train_test_split.py
 1. training.py
@@ -9,7 +10,10 @@ checkalphabet.py - when prepare a dataset
 4. comb.py # biz buni xam ishlatishimiz mumkin, bunda optimallashtirilgan metod bn training/test qilish bor.
 5. testing_comb_uz.py #bu xamma dataset uchun ishlatsa buladi
 6. testing_L_comb.py
-
+---------------
+optimized uchun yangi tuzuilgan fayllar
+4. optimized.py
+5. optimized_testing.py
 time complexity jadvali (uning bir ustuni train line count)
 bitta kubikda bir xil xarf uchrasa, bu foydasiz hisoblanadi, shuni uchun uni qoidaga asoslanga dastur yordamida boshqa chastotasi yuqori bulgan harf bn almashtiramiz. (bunga bir algoritm tuzib yuborsak buladi)
 uzbek tilida 2 ta grafika foydaniladi, bunda kirilcha ishlatilmadi.
