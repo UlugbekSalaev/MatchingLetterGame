@@ -60,7 +60,7 @@ def count_words_by_length(words, cube_sets):
 def print_statistics(words, word_counts):
     for i, length in enumerate([3, 4, 5]):
         counts = [wc[i] for wc in word_counts]
-        print(f"{len(counts)} \t {len(words[length])} \t {max(counts)} \t {sum(counts)/(len(counts)*len(words[length])):.2f} \t {statistics.stdev(counts) if len(counts) > 1 else 0:.2f}")
+        print(f"{len(counts)} \t {len(words[length])} \t {max(counts)} \t {sum(counts)*100/(len(counts)*len(words[length])):.2f} \t {statistics.stdev(counts) if len(counts) > 1 else 0:.2f}")
 
 
 
