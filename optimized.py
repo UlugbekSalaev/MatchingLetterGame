@@ -40,8 +40,8 @@ def write_cubes_to_files(cubes, output_path):
 
 
 # File paths
-datasets = ['en', 'es', 'fr', 'kz', 'ms', 'pl', 'ru', 'sl', 'tr', 'tt', 'uz']
-for dataset in datasets:
+datasets = ['de', 'en', 'es', 'fr', 'kz', 'ms', 'pl', 'ru', 'sl', 'tr', 'tt', 'uz']
+for dataset in ['pl']:
     input_file = f"result/{dataset}/8cub/train_res_app1_it0"
     output_path = f"result/{dataset}/8cub/optimized"
 
@@ -54,4 +54,4 @@ for dataset in datasets:
     generated_cubes = generate_swapped_cubes(cubes)
     write_cubes_to_files(generated_cubes, output_path)
 
-    print(f"Generated {len(generated_cubes)} unique cube set files.")
+    print(f"Dataset={dataset} Generated {len(generated_cubes)} unique cube set files.")

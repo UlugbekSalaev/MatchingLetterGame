@@ -5,8 +5,8 @@ import os
 from nltk import ngrams
 import operator
 import time
-# datasets = ["uz"]
-datasets = ['de', 'en', 'es', 'fr','kz', 'ms','pl', 'ru', 'sl', 'tr', 'tt', 'uz']
+datasets = ["tr"]
+# datasets = ['de', 'en', 'es', 'fr','kz', 'ms','pl', 'ru', 'sl', 'tr', 'tt', 'uz']
 cc = 9 # cubic count 5-8 for 3-5 letter, 9 cub for 6-7 letter
 for dataset in datasets:
     if dataset == "uz":
@@ -252,7 +252,7 @@ for dataset in datasets:
                     if dataset == "kz":
                         dubl = ['а', 'е', 'ы']
                     if dataset == "tr":
-                        dubl = ['a', 'e', 'i']
+                        dubl = ['a', 'e', 'i', 'ı']
                     if dataset == "tt":
                         dubl = ['а', 'е', 'ә']
                     if dataset == "es":
