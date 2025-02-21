@@ -5,7 +5,7 @@ import os
 from nltk import ngrams
 import operator
 import time
-datasets = ["tr"]
+datasets = ["fr"]
 # datasets = ['de', 'en', 'es', 'fr','kz', 'ms','pl', 'ru', 'sl', 'tr', 'tt', 'uz']
 cc = 9 # cubic count 5-8 for 3-5 letter, 9 cub for 6-7 letter
 for dataset in datasets:
@@ -38,13 +38,13 @@ for dataset in datasets:
     #     soft = ['a', 'e', 'i', 'o', 'u', 'y']
     #     hard = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z']
     if dataset == "fr":
-        letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',  'x', 'y', 'é', 'è', 'à', 'æ', 'ÿ']  #  french
+        letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',  'x', 'y', 'é', 'è', 'à', 'æ', 'ÿ']  #  french
         soft = ['a', 'e', 'i', 'o', 'u', 'y', 'é', 'è', 'à', 'æ', 'ÿ']
-        hard = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'x']
+        hard = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'x']
     if dataset == "kz":
-        letters = ['ә', 'ғ', 'қ', 'ң', 'ө', 'ұ', 'ү', 'і', 'а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'я', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ш']
+        letters = ['ә', 'ғ', 'қ', 'ң', 'ө', 'ұ', 'ү', 'і', 'а', 'е', 'и', 'о', 'у', 'ы', 'я', 'б', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ш']
         soft = ['ә', 'ө', 'і', 'а', 'е', 'и', 'о', 'у', 'я', 'ы']
-        hard = ['ғ', 'қ', 'ң', 'ұ', 'ү', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ч', 'ш', 'ё']
+        hard = ['ғ', 'қ', 'ң', 'ұ', 'ү', 'б', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ш']
     if dataset == "ms":
         letters = ['a',	'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'v', 'w', 'y']  # malay
         soft = ['a', 'e', 'i', 'o', 'u']
@@ -163,7 +163,7 @@ for dataset in datasets:
         #     for i in train[iteration]:
         #         file.writelines(i + "\n")
         # continue
-        with open("Dataset/letter67_fold/"+dataset + "/train" + str(iteration), encoding="utf8") as file:
+        with open("Dataset/letter67/words_"+dataset , encoding="utf8") as file:
             lines = file.readlines()
         train[iteration] = [line.rstrip() for line in lines]
 
@@ -176,19 +176,21 @@ for dataset in datasets:
             bi_freq = {}
             for word in train[iteration]:
                 for c in word:
-                    if c in letter_frq:
-                        letter_frq[c] += 1
-                    else:
-                        letter_frq[c] = 1
+                    if c in letters:
+                        if c in letter_frq:
+                            letter_frq[c] += 1
+                        else:
+                            letter_frq[c] = 1
 
                 # calculating bigram frq
                 bigrams = ngrams(word, 2)
                 for grams in bigrams: # grams = ('z', 'u')
                     key = grams[0]+grams[1]
-                    if key in bi_freq:
-                        bi_freq[key] += 1
-                    else:
-                        bi_freq[key] = 1
+                    if grams[0] in letters and grams[1] in letters:
+                        if key in bi_freq:
+                            bi_freq[key] += 1
+                        else:
+                            bi_freq[key] = 1
 
             letter_frq = dict(sorted(letter_frq.items(), key=operator.itemgetter(1), reverse=True))
             bi_freq = dict(sorted(bi_freq.items(), key=operator.itemgetter(1), reverse=True))
@@ -244,17 +246,17 @@ for dataset in datasets:
                     if dataset == "de":
                         dubl = ['e', 'a', 'i']
                     if dataset == "fr":
-                        dubl = ['a', 'e', 'i', 'o']
+                        dubl = ['e', 'a', 'i', 'é', 'o']
                     if dataset == "ms":
                         dubl = ['a', 'i', 'e', 'u', 'o']
                     if dataset == "pl":
                         dubl = ['a', 'o', 'i', 'e']
                     if dataset == "kz":
-                        dubl = ['а', 'е', 'ы']
+                        dubl = ['а', 'ы', 'е', 'і']
                     if dataset == "tr":
                         dubl = ['a', 'e', 'i', 'ı']
                     if dataset == "tt":
-                        dubl = ['а', 'е', 'ә']
+                        dubl = ['а', 'ы', 'е', 'ә']
                     if dataset == "es":
                         dubl = ['a', 'o', 'e']
 

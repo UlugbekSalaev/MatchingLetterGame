@@ -1,7 +1,7 @@
-a	ą	e	t	w	j
-i	ę	o	d	ł	ż
-e	a	o	n	z	f
-o	a	y	l	b	ć
-y	i	u	p	c	ś
-u	i	m	s	h	r
-ó	e	k	r	g	s
+a	ą	e	t	z	g
+i	ę	o	n	m	ć
+e	a	o	p	b	f
+o	a	u	r	c	ś
+y	i	r	w	h	k
+u	i	k	s	j	l
+ó	e	d	ł	ż	s

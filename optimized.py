@@ -41,17 +41,17 @@ def write_cubes_to_files(cubes, output_path):
 
 # File paths
 datasets = ['de', 'en', 'es', 'fr', 'kz', 'ms', 'pl', 'ru', 'sl', 'tr', 'tt', 'uz']
-for dataset in ['pl']:
-    input_file = f"result/{dataset}/8cub/train_res_app1_it0"
-    output_path = f"result/{dataset}/8cub/optimized"
+for dataset in ['fr']:
+    input_file = f"result/{dataset}/9cub/train_res_app1_it0"
+    output_dir = f"result/{dataset}/9cub/optimized"
 
-    if os.path.exists(output_path):
-        shutil.rmtree(dir)
-    os.makedirs(output_path)
+    # if os.path.exists(output_path):
+    #     shutil.rmtree(dir)
+    # os.makedirs(output_path)
 
     # Process cubes
     cubes = read_cubes(input_file)
     generated_cubes = generate_swapped_cubes(cubes)
-    write_cubes_to_files(generated_cubes, output_path)
+    write_cubes_to_files(generated_cubes, output_dir)
 
     print(f"Dataset={dataset} Generated {len(generated_cubes)} unique cube set files.")
